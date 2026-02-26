@@ -1,0 +1,56 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+import type { LandingContent } from '@/features/landing/types';
+
+type HeroSectionProps = {
+  hero: LandingContent['hero'];
+};
+
+export function HeroSection({ hero }: HeroSectionProps) {
+  return (
+    <section className="hero section" id="top">
+      <div className="container hero-layout">
+        <div className="hero-content">
+          <p className="hero-kicker">Insurance Infrastructure by SRG</p>
+          <h1>{hero.title}</h1>
+          <p className="hero-subtitle">{hero.subtitle}</p>
+          <div className="hero-actions">
+            <Link className="primary-button" href="#contacts">
+              {hero.cta}
+            </Link>
+            <Link className="ghost-button" href="#technology">
+              Смотреть API-возможности
+            </Link>
+          </div>
+          <div className="pillars-grid">
+            {hero.pillars.map((pillar) => (
+              <article key={pillar.title} className="pillar-card">
+                <h2>{pillar.title}</h2>
+                <p>{pillar.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="hero-media reveal">
+          <Image
+            alt={hero.media.alt}
+            className="hero-photo"
+            height={900}
+            src={hero.media.src}
+            width={1200}
+          />
+          <div className="hero-badge hero-badge-top">
+            <span>API-first</span>
+            <strong>Интеграция за недели, не за кварталы</strong>
+          </div>
+          <div className="hero-badge hero-badge-bottom">
+            <span>Underwriting Flow</span>
+            <strong>Агент и андеррайтер в едином контуре</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
