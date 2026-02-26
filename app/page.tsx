@@ -116,6 +116,44 @@ export default async function Page() {
           <div>
             <h2 className="section-title">{content.technology.title}</h2>
             <p className="section-subtitle">{content.technology.body}</p>
+            <div className="inline-infographic tech-inline reveal" aria-label="Целостная схема платформы SRG">
+              <svg aria-hidden="true" className="tech-circuit" viewBox="0 0 620 220">
+                <path className="circuit-line line-1" d="M310 110L138 56" />
+                <path className="circuit-line line-2" d="M310 110L116 162" />
+                <path className="circuit-line line-3" d="M310 110L505 56" />
+                <path className="circuit-line line-4" d="M310 110L525 162" />
+                <path className="circuit-line line-5" d="M310 110L310 30" />
+
+                <circle className="circuit-wave wave-1" cx="310" cy="110" r="30" />
+                <circle className="circuit-wave wave-2" cx="310" cy="110" r="30" />
+
+                <g className="circuit-core">
+                  <circle cx="310" cy="110" r="34" />
+                  <text x="310" y="116">SRG</text>
+                </g>
+
+                <g className="circuit-node">
+                  <circle cx="138" cy="56" r="23" />
+                  <text x="138" y="61">Банк</text>
+                </g>
+                <g className="circuit-node">
+                  <circle cx="116" cy="162" r="23" />
+                  <text x="116" y="167">СК</text>
+                </g>
+                <g className="circuit-node">
+                  <circle cx="505" cy="56" r="23" />
+                  <text x="505" y="61">CRM</text>
+                </g>
+                <g className="circuit-node">
+                  <circle cx="525" cy="162" r="23" />
+                  <text x="525" y="167">ERP</text>
+                </g>
+                <g className="circuit-node node-api">
+                  <circle cx="310" cy="30" r="20" />
+                  <text x="310" y="34">API</text>
+                </g>
+              </svg>
+            </div>
 
             <div className="matrix-grid">
               {content.technology.matrix.map((row) => (
