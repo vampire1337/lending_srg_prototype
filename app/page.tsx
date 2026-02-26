@@ -3,17 +3,43 @@ import { Suspense } from 'react';
 
 import { LeadForm } from '@/components/forms/lead-form';
 import { AgentVoices, AgentVoicesFallback } from '@/components/landing/agent-voices';
-import { ComponentItemIcon, StackItemIcon } from '@/components/landing/content-icons';
+import {
+  ComponentItemIcon,
+  type ComponentIconKind,
+  StackItemIcon,
+  type StackIconKind,
+} from '@/components/landing/content-icons';
 import { HeroSection } from '@/components/landing/hero-section';
 import {
   BanksInfrastructureSvg,
-  InsurersDashboardSvg,
   TechCircuitSvg,
 } from '@/components/landing/premium-infographics';
 import { SiteHeader } from '@/components/landing/site-header';
 import { getLandingContent } from '@/features/landing/content';
 
 export const runtime = 'nodejs';
+
+const stackIconKindByTitle: Record<string, StackIconKind> = {
+  'Продукты любой сложности': 'products',
+  'Гибкий автоскоринг': 'scoring',
+  'Тонкая настройка тарифа': 'tariff',
+  'Документы любой сложности': 'documents',
+  'Инструмент для агентов': 'agents',
+  'Рост продаж': 'sales',
+  'Чат агент-андеррайтер': 'chat',
+  'Гибкая мотивация': 'motivation',
+  'Интеграция через API': 'api',
+  'Данные в ваши учётные системы': 'data',
+  'Безопасность и надёжность': 'security',
+};
+
+const componentIconKindByTitle: Record<string, ComponentIconKind> = {
+  'Управление продуктами': 'product-management',
+  'Процесс продажи': 'sale-flow',
+  Коммуникации: 'communications',
+  Документооборот: 'document-flow',
+  Интеграции: 'integrations',
+};
 
 export default async function Page() {
   const content = await getLandingContent();
@@ -68,7 +94,12 @@ export default async function Page() {
               <p className="section-subtitle">{content.insurers.subtitle}</p>
             </div>
             <div className="headline-image reveal" aria-label={content.insurers.media.alt}>
-              <InsurersDashboardSvg />
+              <Image
+                alt={content.insurers.media.alt}
+                fill
+                sizes="(max-width: 1120px) 100vw, 32vw"
+                src={content.insurers.media.src}
+              />
             </div>
           </div>
 
@@ -79,7 +110,7 @@ export default async function Page() {
                 {content.insurers.productControl.map((item, index) => (
                   <li key={item.title}>
                     <span className="stack-item-icon" aria-hidden="true">
-                      <StackItemIcon index={index} />
+                      <StackItemIcon kind={stackIconKindByTitle[item.title] ?? (index % 2 === 0 ? 'products' : 'documents')} />
                     </span>
                     <div className="stack-item-copy">
                       <strong>{item.title}</strong>
@@ -96,7 +127,7 @@ export default async function Page() {
                 {content.insurers.salesControl.map((item, index) => (
                   <li key={item.title}>
                     <span className="stack-item-icon" aria-hidden="true">
-                      <StackItemIcon index={index + 1} />
+                      <StackItemIcon kind={stackIconKindByTitle[item.title] ?? (index % 2 === 0 ? 'agents' : 'chat')} />
                     </span>
                     <div className="stack-item-copy">
                       <strong>{item.title}</strong>
@@ -113,7 +144,7 @@ export default async function Page() {
                 {content.insurers.integrations.map((item, index) => (
                   <li key={item.title}>
                     <span className="stack-item-icon" aria-hidden="true">
-                      <StackItemIcon index={index + 2} />
+                      <StackItemIcon kind={stackIconKindByTitle[item.title] ?? (index % 2 === 0 ? 'api' : 'data')} />
                     </span>
                     <div className="stack-item-copy">
                       <strong>{item.title}</strong>
@@ -145,28 +176,13 @@ export default async function Page() {
               ))}
             </div>
 
-            <article className="api-terminal reveal" aria-label="Пример ответа REST API">
-              <header className="api-terminal-head">
-                <span />
-                <span />
-                <span />
-                <strong>POST /api/v1/policy/issue</strong>
-              </header>
-              <pre>
-                <code>{`{
-  "status": "ok",
-  "policy_id": "SRG-8849-001",
-  "documents": ["policy.pdf", "appendix.pdf"],
-  "delivery": { "channel": "webhook", "state": "sent" }
-}`}</code>
-              </pre>
-            </article>
-
             <div className="component-grid">
               {content.technology.components.map((component, index) => (
                 <article className="component-card" key={component.title}>
                   <span className="component-icon" aria-hidden="true">
-                    <ComponentItemIcon index={index} />
+                    <ComponentItemIcon
+                      kind={componentIconKindByTitle[component.title] ?? (index % 2 === 0 ? 'product-management' : 'integrations')}
+                    />
                   </span>
                   <h3>{component.title}</h3>
                   <p>{component.description}</p>
@@ -188,7 +204,7 @@ export default async function Page() {
 
       <section className="section" id="voices">
         <div className="container">
-          <h2 className="section-title voices-title">Инструмент, который выбирают агенты-профессионалы.</h2>
+          <h2 className="section-title voices-title">Инструмент, который любят агенты-профессионалы.</h2>
           <Suspense fallback={<AgentVoicesFallback />}>
             <AgentVoices />
           </Suspense>
