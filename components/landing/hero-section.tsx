@@ -12,7 +12,7 @@ export function HeroSection({ hero }: HeroSectionProps) {
     <section className="hero section" id="top">
       <div className="container hero-layout">
         <div className="hero-content">
-          <p className="hero-kicker">Insurance Infrastructure by SRG</p>
+          <p className="hero-kicker">Страховая инфраструктура SRG</p>
           <h1>{hero.title}</h1>
           <p className="hero-subtitle">{hero.subtitle}</p>
           <div className="hero-actions">
@@ -38,15 +38,16 @@ export function HeroSection({ hero }: HeroSectionProps) {
             alt={hero.media.alt}
             className="hero-photo"
             height={900}
+            loading="eager"
             src={hero.media.src}
             width={1200}
           />
           <div className="hero-badge hero-badge-top">
-            <span>API-first</span>
+            <span>API-подход</span>
             <strong>Интеграция за недели, не за кварталы</strong>
           </div>
           <div className="hero-badge hero-badge-bottom">
-            <span>Underwriting Flow</span>
+            <span>Поток андеррайтинга</span>
             <strong>Агент и андеррайтер в едином контуре</strong>
           </div>
         </div>

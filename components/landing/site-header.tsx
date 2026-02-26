@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import type { NavItem } from '@/features/landing/types';
 
@@ -11,11 +12,7 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
     <header className="site-header">
       <div className="container header-inner">
         <Link className="brand" href="#top">
-          <span className="brand-mark" aria-hidden="true" />
-          <span className="brand-copy">
-            <strong>SRG Platform</strong>
-            <small>Insurance Infrastructure</small>
-          </span>
+          <Image alt="Платформа SRG" className="brand-logo" height={40} src="/srg-logo.svg" width={168} />
         </Link>
         <nav aria-label="Навигация по разделам" className="nav-links">
           {navigation.map((item) => (

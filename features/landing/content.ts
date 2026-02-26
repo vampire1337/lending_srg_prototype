@@ -62,7 +62,7 @@ const CONTENT_SEED: LandingContent = {
           'Интуитивный интерфейс, автоподстановка данных и быстрые пролонгации за минуты.',
       },
       {
-        title: 'White Label',
+        title: 'Брендированный режим',
         description:
           'Встраивание виджета или работа под брендом банка без изменения привычного UX.',
       },
@@ -123,7 +123,7 @@ const CONTENT_SEED: LandingContent = {
     ],
     integrations: [
       {
-        title: 'API-first интеграция',
+        title: 'Интеграция через API',
         description: 'Подключение к внутренним системам без переписывания существующих процессов.',
       },
       {
@@ -141,8 +141,8 @@ const CONTENT_SEED: LandingContent = {
     title: 'API-инфраструктура, которая встраивается куда угодно.',
     body: 'Настоящая сила SRG в бесшовной интеграции: вы получаете строительные блоки, из которых собираете страховой сервис под свои задачи и контуры.',
     media: {
-      src: 'https://srgroup.ru/local/templates/srg/static/img/general/main-bottom.png',
-      alt: 'Технологическая инфраструктура и интеграции',
+      src: 'https://srgroup.ru/upload/iblock/ca5/nc83kn065jn81oe3860fu2hmujvo5jkh.jpg',
+      alt: 'Команда разработки и технологические интеграции',
     },
     matrix: [
       {

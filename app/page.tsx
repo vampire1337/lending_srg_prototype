@@ -24,6 +24,10 @@ export default async function Page() {
             <p>{content.dna.body}</p>
           </article>
           <article className="focus-card reveal reveal-delay">
+            <h2>{content.problem.title}</h2>
+            <p>{content.problem.body}</p>
+          </article>
+          <article className="focus-card reveal reveal-delay-2">
             <h2>{content.platform.title}</h2>
             <p>{content.platform.body}</p>
           </article>
@@ -157,9 +161,6 @@ export default async function Page() {
           <div>
             <h2 className="section-title">{content.cta.title}</h2>
             <p className="section-subtitle">{content.cta.body}</p>
-            <p className="support-note">
-              Для автоматической отправки лидов в CRM укажите `LEAD_WEBHOOK_URL` в окружении.
-            </p>
           </div>
           <LeadForm />
         </div>
@@ -167,7 +168,7 @@ export default async function Page() {
 
       <footer className="footer">
         <div className="container footer-inner">
-          <p>SRG Platform</p>
+          <p>Платформа SRG</p>
           <p>Страховая инфраструктура для банков и страховых компаний</p>
         </div>
       </footer>
