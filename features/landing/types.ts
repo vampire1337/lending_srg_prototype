@@ -26,6 +26,9 @@ export type ApiMatrixItem = {
 export type Testimonial = {
   quote: string;
   author: string;
+  role?: string;
+  company?: string;
+  companyMark?: string;
 };
 
 export type LandingContent = {

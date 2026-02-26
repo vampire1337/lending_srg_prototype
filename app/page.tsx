@@ -3,7 +3,13 @@ import { Suspense } from 'react';
 
 import { LeadForm } from '@/components/forms/lead-form';
 import { AgentVoices, AgentVoicesFallback } from '@/components/landing/agent-voices';
+import { ComponentItemIcon, StackItemIcon } from '@/components/landing/content-icons';
 import { HeroSection } from '@/components/landing/hero-section';
+import {
+  BanksInfrastructureSvg,
+  InsurersDashboardSvg,
+  TechCircuitSvg,
+} from '@/components/landing/premium-infographics';
 import { SiteHeader } from '@/components/landing/site-header';
 import { getLandingContent } from '@/features/landing/content';
 
@@ -48,8 +54,8 @@ export default async function Page() {
               ))}
             </div>
           </div>
-          <aside className="section-media reveal">
-            <Image alt={content.banks.media.alt} fill sizes="(max-width: 980px) 100vw, 34vw" src={content.banks.media.src} />
+          <aside className="section-media section-media-svg reveal" aria-label={content.banks.media.alt}>
+            <BanksInfrastructureSvg />
           </aside>
         </div>
       </section>
@@ -61,13 +67,8 @@ export default async function Page() {
               <h2 className="section-title">{content.insurers.title}</h2>
               <p className="section-subtitle">{content.insurers.subtitle}</p>
             </div>
-            <div className="headline-image reveal">
-              <Image
-                alt={content.insurers.media.alt}
-                fill
-                sizes="(max-width: 980px) 100vw, 28vw"
-                src={content.insurers.media.src}
-              />
+            <div className="headline-image reveal" aria-label={content.insurers.media.alt}>
+              <InsurersDashboardSvg />
             </div>
           </div>
 
@@ -75,10 +76,15 @@ export default async function Page() {
             <article className="stack-card reveal">
               <h3>Гибкость и контроль над продуктами</h3>
               <ul>
-                {content.insurers.productControl.map((item) => (
+                {content.insurers.productControl.map((item, index) => (
                   <li key={item.title}>
-                    <strong>{item.title}</strong>
-                    <span>{item.description}</span>
+                    <span className="stack-item-icon" aria-hidden="true">
+                      <StackItemIcon index={index} />
+                    </span>
+                    <div className="stack-item-copy">
+                      <strong>{item.title}</strong>
+                      <span>{item.description}</span>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -87,10 +93,15 @@ export default async function Page() {
             <article className="stack-card reveal reveal-delay">
               <h3>Управление агентской сетью и продажами</h3>
               <ul>
-                {content.insurers.salesControl.map((item) => (
+                {content.insurers.salesControl.map((item, index) => (
                   <li key={item.title}>
-                    <strong>{item.title}</strong>
-                    <span>{item.description}</span>
+                    <span className="stack-item-icon" aria-hidden="true">
+                      <StackItemIcon index={index + 1} />
+                    </span>
+                    <div className="stack-item-copy">
+                      <strong>{item.title}</strong>
+                      <span>{item.description}</span>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -99,10 +110,15 @@ export default async function Page() {
             <article className="stack-card reveal reveal-delay-2">
               <h3>Технологии для интеграции</h3>
               <ul>
-                {content.insurers.integrations.map((item) => (
+                {content.insurers.integrations.map((item, index) => (
                   <li key={item.title}>
-                    <strong>{item.title}</strong>
-                    <span>{item.description}</span>
+                    <span className="stack-item-icon" aria-hidden="true">
+                      <StackItemIcon index={index + 2} />
+                    </span>
+                    <div className="stack-item-copy">
+                      <strong>{item.title}</strong>
+                      <span>{item.description}</span>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -117,42 +133,7 @@ export default async function Page() {
             <h2 className="section-title">{content.technology.title}</h2>
             <p className="section-subtitle">{content.technology.body}</p>
             <div className="inline-infographic tech-inline reveal" aria-label="Целостная схема платформы SRG">
-              <svg aria-hidden="true" className="tech-circuit" viewBox="0 0 620 220">
-                <path className="circuit-line line-1" d="M310 110L138 56" />
-                <path className="circuit-line line-2" d="M310 110L116 162" />
-                <path className="circuit-line line-3" d="M310 110L505 56" />
-                <path className="circuit-line line-4" d="M310 110L525 162" />
-                <path className="circuit-line line-5" d="M310 110L310 30" />
-
-                <circle className="circuit-wave wave-1" cx="310" cy="110" r="30" />
-                <circle className="circuit-wave wave-2" cx="310" cy="110" r="30" />
-
-                <g className="circuit-core">
-                  <circle cx="310" cy="110" r="34" />
-                  <text x="310" y="116">SRG</text>
-                </g>
-
-                <g className="circuit-node">
-                  <circle cx="138" cy="56" r="23" />
-                  <text x="138" y="61">Банк</text>
-                </g>
-                <g className="circuit-node">
-                  <circle cx="116" cy="162" r="23" />
-                  <text x="116" y="167">СК</text>
-                </g>
-                <g className="circuit-node">
-                  <circle cx="505" cy="56" r="23" />
-                  <text x="505" y="61">CRM</text>
-                </g>
-                <g className="circuit-node">
-                  <circle cx="525" cy="162" r="23" />
-                  <text x="525" y="167">ERP</text>
-                </g>
-                <g className="circuit-node node-api">
-                  <circle cx="310" cy="30" r="20" />
-                  <text x="310" y="34">API</text>
-                </g>
-              </svg>
+              <TechCircuitSvg />
             </div>
 
             <div className="matrix-grid">
@@ -164,9 +145,29 @@ export default async function Page() {
               ))}
             </div>
 
+            <article className="api-terminal reveal" aria-label="Пример ответа REST API">
+              <header className="api-terminal-head">
+                <span />
+                <span />
+                <span />
+                <strong>POST /api/v1/policy/issue</strong>
+              </header>
+              <pre>
+                <code>{`{
+  "status": "ok",
+  "policy_id": "SRG-8849-001",
+  "documents": ["policy.pdf", "appendix.pdf"],
+  "delivery": { "channel": "webhook", "state": "sent" }
+}`}</code>
+              </pre>
+            </article>
+
             <div className="component-grid">
-              {content.technology.components.map((component) => (
+              {content.technology.components.map((component, index) => (
                 <article className="component-card" key={component.title}>
+                  <span className="component-icon" aria-hidden="true">
+                    <ComponentItemIcon index={index} />
+                  </span>
                   <h3>{component.title}</h3>
                   <p>{component.description}</p>
                 </article>
@@ -187,7 +188,7 @@ export default async function Page() {
 
       <section className="section" id="voices">
         <div className="container">
-          <h2 className="section-title">Инструмент, который любят агенты-профессионалы.</h2>
+          <h2 className="section-title voices-title">Инструмент, который выбирают агенты-профессионалы.</h2>
           <Suspense fallback={<AgentVoicesFallback />}>
             <AgentVoices />
           </Suspense>

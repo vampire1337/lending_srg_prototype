@@ -3,6 +3,7 @@
 import { useActionState } from 'react';
 import { useFormStatus } from 'react-dom';
 
+import { InputFieldIcon } from '@/components/landing/content-icons';
 import { submitLead } from '@/features/lead/actions';
 import { initialLeadFormState } from '@/features/lead/state';
 
@@ -21,17 +22,50 @@ export function LeadForm() {
 
   return (
     <form action={action} className="lead-form">
-      <label htmlFor="name">Имя</label>
-      <input id="name" name="name" required type="text" />
+      <div className="lead-field">
+        <label htmlFor="name">Имя</label>
+        <div className="lead-input-shell">
+          <span className="lead-input-icon" aria-hidden="true">
+            <InputFieldIcon kind="name" />
+          </span>
+          <input id="name" name="name" required type="text" />
+        </div>
+      </div>
 
-      <label htmlFor="company">Компания</label>
-      <input id="company" name="company" required type="text" />
+      <div className="lead-field">
+        <label htmlFor="company">Компания</label>
+        <div className="lead-input-shell">
+          <span className="lead-input-icon" aria-hidden="true">
+            <InputFieldIcon kind="company" />
+          </span>
+          <input id="company" name="company" required type="text" />
+        </div>
+      </div>
 
-      <label htmlFor="email">Email</label>
-      <input id="email" name="email" required type="email" />
+      <div className="lead-field">
+        <label htmlFor="email">Email</label>
+        <div className="lead-input-shell">
+          <span className="lead-input-icon" aria-hidden="true">
+            <InputFieldIcon kind="email" />
+          </span>
+          <input id="email" name="email" required type="email" />
+        </div>
+      </div>
 
-      <label htmlFor="phone">Телефон</label>
-      <input id="phone" name="phone" placeholder="+7 (___) ___-__-__" required type="tel" />
+      <div className="lead-field">
+        <label htmlFor="phone">Телефон</label>
+        <div className="lead-input-shell">
+          <span className="lead-input-icon" aria-hidden="true">
+            <InputFieldIcon kind="phone" />
+          </span>
+          <input id="phone" name="phone" placeholder="+7 (___) ___-__-__" required type="tel" />
+        </div>
+      </div>
+
+      <label className="consent-row">
+        <input name="consent" required type="checkbox" value="yes" />
+        <span>Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</span>
+      </label>
 
       <SubmitButton />
 

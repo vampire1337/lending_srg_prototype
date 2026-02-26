@@ -197,14 +197,23 @@ export const DEFAULT_LANDING_CONTENT: LandingContent = {
 export const DEFAULT_TESTIMONIALS: Testimonial[] = [
   {
     quote: 'В SRG самая понятная система. Оформляю 95% клиентов здесь.',
-    author: 'Шамиля, агент',
+    author: 'Шамиля',
+    role: 'Старший агент',
+    company: 'Ипотека.Проф',
+    companyMark: 'IP',
   },
   {
     quote: 'У вас самая полная система, лучше я не встречал. Особенно по титулу.',
-    author: 'Никита, агент',
+    author: 'Никита',
+    role: 'Руководитель группы',
+    company: 'PrimeBroker',
+    companyMark: 'PB',
   },
   {
     quote: 'Спасибо, что сделали статус “Запрошены документы” — это очень удобно.',
-    author: 'Кристина, агент',
+    author: 'Кристина',
+    role: 'Эксперт по сделкам',
+    company: 'CityEstate',
+    companyMark: 'CE',
   },
 ];

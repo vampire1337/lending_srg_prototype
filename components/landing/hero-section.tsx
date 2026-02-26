@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { BankRevenueIcon, InsurerControlIcon, PlatformInfrastructureIcon } from '@/components/landing/srg-svg-icons';
 import type { LandingContent } from '@/features/landing/types';
 
 type HeroSectionProps = {
@@ -8,6 +9,8 @@ type HeroSectionProps = {
 };
 
 export function HeroSection({ hero }: HeroSectionProps) {
+  const visuals = [BankRevenueIcon, InsurerControlIcon, PlatformInfrastructureIcon];
+
   return (
     <section className="hero section" id="top">
       <div className="container hero-layout">
@@ -24,12 +27,19 @@ export function HeroSection({ hero }: HeroSectionProps) {
             </Link>
           </div>
           <div className="pillars-grid">
-            {hero.pillars.map((pillar) => (
-              <article key={pillar.title} className="pillar-card">
-                <h2>{pillar.title}</h2>
-                <p>{pillar.description}</p>
-              </article>
-            ))}
+            {hero.pillars.map((pillar, index) => {
+              const Visual = visuals[index] ?? PlatformInfrastructureIcon;
+
+              return (
+                <article key={pillar.title} className="pillar-card">
+                  <div className="pillar-visual" aria-hidden="true">
+                    <Visual />
+                  </div>
+                  <h2>{pillar.title}</h2>
+                  <p>{pillar.description}</p>
+                </article>
+              );
+            })}
           </div>
         </div>
 
