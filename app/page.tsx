@@ -28,7 +28,7 @@ const stackIconKindByTitle: Record<string, StackIconKind> = {
   'Рост продаж': 'sales',
   'Чат агент-андеррайтер': 'chat',
   'Гибкая мотивация': 'motivation',
-  'Интеграция через API': 'api',
+  'API-first подход': 'api',
   'Данные в ваши учётные системы': 'data',
   'Безопасность и надёжность': 'security',
 };
